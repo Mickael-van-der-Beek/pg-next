@@ -1,0 +1,42 @@
+{
+  "name": "pg-next",
+  "version": "1.0.0",
+  "description": "Helper functions for querying PostgreSQL through the pg client",
+  "keywords": [
+    "pg",
+    "postgre",
+    "postgres",
+    "postgresql",
+    "query",
+    "helpers"
+  ],
+  "homepage": "http://github.com/Mickael-van-der-Beek/pg-next",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Mickael-van-der-Beek/pg-next.git"
+  },
+  "author": "Brian Carlson <brian.m.carlson@gmail.com>",
+  "main": "./lib/index.js",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.5.0"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "nyc": "^11.2.1",
+    "semistandard": "^11.0.0",
+    "snazzy": "^7.0.0"
+  },
+  "scripts": {
+    "coverage": "nyc npm run unit",
+    "lint": "semistandard --verbose | snazzy",
+    "test": "npm run lint && npm run coverage",
+    "unit": "mocha ./test"
+  },
+  "semistandard": {
+    "env": [
+      "mocha"
+    ]
+  }
+}

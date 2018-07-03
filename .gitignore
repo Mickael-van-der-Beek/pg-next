@@ -1,0 +1,23 @@
+# Dot files
+.*
+
+# Env files
+*.env
+
+# Git files
+!/.gitignore
+!/.gitmodules
+
+# Logs files
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Dependencies directory
+node_modules
+package-lock.json
+yarn.lock
