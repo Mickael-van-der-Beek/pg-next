@@ -1,7 +1,11 @@
 'use strict';
 
 const assert = require('assert');
-const { sqlEscapeIdentifier, sqlEscapeLiteral } = require('../lib/sql-escapes');
+const {
+  sqlEscapeIdentifier,
+  sqlJoinEscapeIdentifier,
+  sqlEscapeLiteral
+} = require('../lib/sql-escapes');
 
 describe('SQL escapes', () => {
   describe('SQL escape identifier', () => {
@@ -28,6 +32,11 @@ describe('SQL escapes', () => {
     });
     it('contains single quotes, double quotes, and backslashes', () => {
       assert.strictEqual(sqlEscapeIdentifier('hello \\ \' " world').text, '"hello \\ \' "" world"');
+    });
+  });
+  describe('SQL join escape identifier', () => {
+    it('join values together with separator and escape the result', () => {
+      assert.strictEqual(sqlJoinEscapeIdentifier(['hello', '"', 'world'], '_').text, '"hello_""_world"');
     });
   });
   describe('SQL escape literal', () => {
