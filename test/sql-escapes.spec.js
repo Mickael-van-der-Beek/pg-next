@@ -6,6 +6,7 @@ const {
   sqlJoinEscapeIdentifier,
   sqlEscapeLiteral
 } = require('../lib/sql-escapes');
+const constants = require('../lib/constants');
 
 describe('SQL escapes', () => {
   describe('SQL escape identifier', () => {
@@ -32,6 +33,11 @@ describe('SQL escapes', () => {
     });
     it('contains single quotes, double quotes, and backslashes', () => {
       assert.strictEqual(sqlEscapeIdentifier('hello \\ \' " world').text, '"hello \\ \' "" world"');
+    });
+    it('throws if identifier longer that maximum allowed byte length', () => {
+      assert.doesNotThrow(() => sqlEscapeIdentifier(new Array(constants.NAMEDATALEN - 2 - 1).fill('a').join('')), Error);
+      assert.throws(() => sqlEscapeIdentifier(new Array(constants.NAMEDATALEN - 2).fill('a').join('')), Error);
+      assert.throws(() => sqlEscapeIdentifier(new Array(constants.NAMEDATALEN - 2 + 1).fill('a').join('')), Error);
     });
   });
   describe('SQL join escape identifier', () => {
