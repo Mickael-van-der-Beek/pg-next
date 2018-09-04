@@ -1,6 +1,6 @@
 {
   "name": "pg-next",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Helper functions for querying PostgreSQL through the pg client.",
   "keywords": [
     "pg",
